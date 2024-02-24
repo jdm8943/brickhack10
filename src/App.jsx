@@ -10,17 +10,16 @@ class App extends Component {
     this.state = {
       displayName: null,
       uid: null,
+      isInstructor: null,
     };
   }
 
-  loginSuccessful = (displayName, uid) => {
-    console.log(displayName,  uid);
-    this.setState({displayName: displayName, uid: uid})
+  loginSuccessful = (displayName, uid, isInstructor) => {
+    this.setState({displayName: displayName, uid: uid, isInstructor: isInstructor})
   }
 
   render(){
-    return (
-      <LoginPage loginSuccessful={this.loginSuccessful}></LoginPage>
+    return ( !this.state.uid ? <LoginPage loginSuccessful={this.loginSuccessful}></LoginPage> : this.state.isInstructor ? <InstructorPage/> : <StudentPage/>
     );
   }
 }

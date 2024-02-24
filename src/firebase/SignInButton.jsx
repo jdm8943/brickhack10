@@ -40,7 +40,7 @@ class SignInButton extends React.Component {
 async signIn() {
     try {
         const result = await signInWithPopup(this.state.auth, this.state.provider);
-        this.props.loginSuccessful(result.user.displayName, result.user.uid);
+        this.props.loginSuccessful(result.user.displayName, result.user.uid, this.props.isInstructor);
         // Handle successful sign-in here (e.g., store user data)
         return result.user;
     } catch (error) {
@@ -62,7 +62,7 @@ async signIn() {
     return (
       <div>
         {!user ? (
-          <Button onClick={this.handleSignIn}>Sign in with Google</Button>
+          <Button onClick={this.handleSignIn} style={{marginTop: "10px"}}>Sign in with Google</Button>
         ) : (
           <div>
             Welcome, {user.displayName}!
