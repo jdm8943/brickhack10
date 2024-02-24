@@ -11,5 +11,5 @@ Currently, two official plugins are available:
 #  Installation
 
 npm install reactfire
-
+npm install react-bootstrap
 - uses reactfire framework
