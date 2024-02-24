@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import { auth, app, db } from './firebase.js';
 import { Navbar } from 'react-bootstrap';
 import { StudentPage } from './StudentPage/StudentPage.jsx'; from;
+import {auth, app, db} from './firebase/firebase.js';
 
 
 
