@@ -1,28 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Row, Col, Form, InputGroup, FormGroup } from 'react-bootstrap';
 
-class StudentProfilePage extends Component {
-    // TODO: change Later
+class StudentCoursesPage extends Component {
     static defaultProps = {
         userName: "spenc",
         userGlobalElo: "Diamond",
     };
     
-    state = {
-        userName: this.props.userName // Initialize state with the default userName
-    };
-    
-    onSubmit = () => {
-        console.log(this.state.userName); // Access userName from state instead of props
-    };
-
-    handleInputChange = (e) => {
-        this.setState({
-            userName: e.target.value // Update userName in state as user types
-        });
-    };
-
-    // need to do css shit :sob:
+    state = {}
 
     render = () => {
         return (
@@ -47,9 +31,4 @@ class StudentProfilePage extends Component {
     }
 }
 
-// TODO: uncomment this later once we have more setup
-// StudentProfilePage.propTypes = {
-//     userName: PropTypes.string.isRequired
-// };
-
-export default StudentProfilePage;
+export default StudentCoursesPage;
