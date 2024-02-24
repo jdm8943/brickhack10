@@ -3,12 +3,13 @@ import { propTypes } from 'react-bootstrap/esm/Image';
 
 class StudentProfilePage extends Component {
     // TODO: change Later
-    defaultProps = {
+    static defaultProps = {
         userName: "spenc"
     }
     state = {};
+    
     render = () => {
-        return <></>
+        return <div>test</div>
     }
 }
 // TODO: uncomment this later once we have more setup

@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import InstructorPage from '../InstructorPage/InstructorPage.jsx';
-import StudentProfilePage from '../StudentPage/StudentPage.jsx';
+import StudentProfilePage from '../StudentProfilePage/StudentProfilePage.jsx';
 
 
 class StudentPage extends Component {
     static defaultProps = {}
     state = {
-        isStudent : true,
-        isLoggedIn : true,
+        isStudent: true,
+        isLoggedIn: true,
     }
 
     renderPage = () => {
         return (
-            this.state.isLoggedIn ? this.isStudent ? 
             <StudentProfilePage/>
-            : <InstructorPage/> : <></>
-            // <LoginForm></LoginForm>
         )
     }
 
@@ -38,7 +35,9 @@ class StudentPage extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    {this.renderPage()}
+                    <Col>
+                        {this.renderPage()}
+                    </Col>
                 </Row>
             </>
         )
