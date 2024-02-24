@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MyFirebase } from "./firebase";
 import { GoogleAuth } from "./googleauth";
 
-class SignIn extends React.Component {
+class SignInButton extends React.Component {
   constructor(props) {
     super(props);
     this.firebase = new MyFirebase();
