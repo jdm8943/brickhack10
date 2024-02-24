@@ -1,5 +1,5 @@
 import React from 'react';
-import QuizQuestion from './QuizQuestion'; // Import the QuizQuestion component
+import Question from './Question'; // Import the QuizQuestion component
 
 class SessionPage extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class SessionPage extends React.Component {
         { 
             question: 'What is the tallest mountain in the world?', 
             answer: 'Mount Everest', 
-            options: ['Mount Washington', 'Mount St. Helen', 'Mount Fuji']  }
+            options: ['Mount Washington', 'Mount St. Helen', 'Mount Fuji', 'Mount Everest']  }
         // Add more questions as needed
       ],
     };
@@ -26,7 +26,7 @@ class SessionPage extends React.Component {
         <h1>Quiz Session</h1>
         <div className="quiz-questions">
           {this.state.questions.map((question, index) => (
-            <QuizQuestion key={index} {...question} />
+            <Question key={index} {...question} />
           ))}
         </div>
       </div>
