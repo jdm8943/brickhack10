@@ -4,7 +4,9 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore, collection, getDocs, query } from "firebase/firestore";
 
 
-
+/**
+ * Class to handle firebase objects, database, analytics
+ */
 export class Firebase {
     constructor() {
         // Your Firebase configuration details
@@ -21,9 +23,11 @@ export class Firebase {
             measurementId: "G-4J4WL8FHTK"
         };
 
-        this.app = initializeApp(firebaseConfig);
-        this.analytics = getAnalytics(app);
-        this.db = getFirestore(app);
+        this.state = {
+            app: initializeApp(firebaseConfig),
+            analytics: getAnalytics(app),
+            db: getFirestore(app)
+        }
     }
 
     getAuth() {
