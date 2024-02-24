@@ -11,5 +11,6 @@ Currently, two official plugins are available:
 #  Installation
 
 npm install reactfire
+npm install firebase
 
 - uses reactfire framework
