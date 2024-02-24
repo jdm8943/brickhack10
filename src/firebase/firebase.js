@@ -7,7 +7,7 @@ import { getFirestore, collection, getDocs, query } from "firebase/firestore";
 /**
  * Class to handle firebase objects, database, analytics
  */
-export class Firebase {
+export class MyFirebase {
     constructor() {
         // Your Firebase configuration details
         // Your web app's Firebase configuration

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Firebase } from "./firebase";
+import { MyFirebase } from "./firebase";
 import { GoogleAuth } from "./googleauth";
 
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
-    this.firebase = new Firebase();
+    this.firebase = new MyFirebase();
     this.firebase.initializeApp();
     this.googleAuth = new GoogleAuth(this.firebase);
   }
