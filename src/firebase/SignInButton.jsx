@@ -3,6 +3,7 @@ import { initializeApp } from "@firebase/app";
 import { getAnalytics } from "@firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "@firebase/auth";
 import { getFirestore, collection, getDocs, query } from "firebase/firestore";
+import {Button} from 'react-bootstrap'
 
 class SignInButton extends React.Component {
   constructor(props) {
@@ -26,7 +27,6 @@ class SignInButton extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state)
     this.setState((prevState) => {
       return {
         analytics: getAnalytics(prevState.app),
@@ -34,13 +34,13 @@ class SignInButton extends React.Component {
         auth: getAuth(prevState.app),
         provider: new GoogleAuthProvider(),
       }
-      }, console.log(this.state))
+      })
   }
 
 async signIn() {
-  console.log(this.state)
     try {
         const result = await signInWithPopup(this.state.auth, this.state.provider);
+        this.props.loginSuccessful(result.user.displayName, result.user.uid);
         // Handle successful sign-in here (e.g., store user data)
         return result.user;
     } catch (error) {
@@ -48,10 +48,6 @@ async signIn() {
         return null;
     }
 }
-
-  state = {
-    user: null,
-  };
 
   handleSignIn = async () => {
     const user = await this.signIn();
@@ -66,7 +62,7 @@ async signIn() {
     return (
       <div>
         {!user ? (
-          <button onClick={this.handleSignIn}>Sign in with Google</button>
+          <Button onClick={this.handleSignIn}>Sign in with Google</Button>
         ) : (
           <div>
             Welcome, {user.displayName}!

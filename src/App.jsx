@@ -7,12 +7,20 @@ import LoginPage from './LoginPage/LoginPage.jsx';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      displayName: null,
+      uid: null,
+    };
+  }
+
+  loginSuccessful = (displayName, uid) => {
+    console.log(displayName,  uid);
+    this.setState({displayName: displayName, uid: uid})
   }
 
   render(){
     return (
-      <LoginPage></LoginPage>
+      <LoginPage loginSuccessful={this.loginSuccessful}></LoginPage>
     );
   }
 }
