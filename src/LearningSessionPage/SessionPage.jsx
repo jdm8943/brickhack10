@@ -6,8 +6,15 @@ class SessionPage extends React.Component {
     super(props);
     this.state = {
       questions: [
-        { question: 'What is the capital of France?', answer: 'Paris' },
-        { question: 'What is the tallest mountain in the world?', answer: 'Mount Everest' },
+        { 
+            question: 'What is the capital of France?', 
+            answer: 'Paris', 
+            options: ['Paris', 'Berlin', 'Chateaux', 'London'] 
+        },
+        { 
+            question: 'What is the tallest mountain in the world?', 
+            answer: 'Mount Everest', 
+            options: ['Mount Washington', 'Mount St. Helen', 'Mount Fuji']  }
         // Add more questions as needed
       ],
     };
