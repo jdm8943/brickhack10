@@ -1,5 +1,5 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-export class GoogleAuth {
+class GoogleAuth {
     constructor(firebase) {
         this.auth = firebase.getAuth();
         this.provider = new GoogleAuthProvider();
@@ -16,3 +16,5 @@ export class GoogleAuth {
         }
     }
 }
+
+export default  GoogleAuth;

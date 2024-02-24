@@ -6,7 +6,6 @@ class SignInButton extends React.Component {
   constructor(props) {
     super(props);
     this.firebase = new MyFirebase();
-    this.firebase.initializeApp();
     this.googleAuth = new GoogleAuth(this.firebase);
   }
 
