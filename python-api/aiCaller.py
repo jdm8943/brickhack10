@@ -13,6 +13,8 @@ def callAI(userAnswer, actualAnswer, question, db):
         organization = org1,
     )
 
+    userMessage = "The question is \"", question, "\". The actual answer determined by the instructor is: \"", actualAnswer, "\". The answer from the student is: \"", userAnswer, "\". Please give feedback.";
+
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-0125",
         messages=[
@@ -62,7 +64,7 @@ def callAI(userAnswer, actualAnswer, question, db):
             FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
             FOREIGN KEY (BookID) REFERENCES Books(BookID)
         );"""},
-            {"role": "user", "content": "The question is to display all the books where the publication year is after 2000. The incorrect sql command is: SELECT * from Bookz where PublicationYea< __x__"}
+            {"role": "user", "content": userMessage}
         ]
     )
     return response.choices[0].message.content
