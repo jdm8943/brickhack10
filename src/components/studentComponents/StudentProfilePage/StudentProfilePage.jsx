@@ -7,6 +7,7 @@ class StudentProfilePage extends Component {
         super(props);
         this.state = {
             userName: this.props.displayName, // Initialize state with the default userName
+            userInputName: "",
             email: this.props.email,
             userRef: this.props.userRef,
             ELO: 0,
@@ -16,44 +17,48 @@ class StudentProfilePage extends Component {
     componentDidMount = () => {
         getDoc(this.state.userRef)
             .then((usersSnapshot) => {
+                const uData = usersSnapshot.data()
+                console.log(uData)
                 this.setState({
-                    ELO: usersSnapshot.data().ELO,
-                }, () => {console.log(this.state.ELO)})
+                    ELO: uData.elo
+                }, () => { console.log(this.state.ELO) })
             })
     }
-    
-    
 
-    // handleInputChange = (e) => {
-    //     this.setState({
-    //         userName: e.target.value // Update userName in state as user types
-    //     });
-    // };
+
+    handleInputChange = (e) => {
+        this.setState({
+            userInputName: e.target.value // Update userName in state as user types
+        });
+    };
 
     // need to do css shit :sob:
 
     render = () => {
         return (
-            <>
+            <div bg="dark" data-bs-theme="dark">
                 <Row>
+                    <Col xs={8}>
+                        <h1>
+                            Welcome, {this.state.userName}
+                        </h1>
+                    </Col>
                     <Col>
-                        <div bg="dark" data-bs-theme="dark">
-                            <h1>
-                                Welcome, {this.state.userName}
-                            </h1>
-                            <InputGroup>
-                                <Form.Control defaultValue={this.state.userName} onChange={e => this.handleInputChange(e)} />
-                                <Button disabled variant="outline-dark">
-                                    Change Display Name
-                                </Button>
-                            </InputGroup>
-                        </div>
+                        <h2>ELO: {this.state.ELO}</h2>
                     </Col>
                 </Row>
                 <Row>
-                    <Form.Text>ELO: {this.state.ELO}</Form.Text>
+                    <Col>
+
+                        <InputGroup>
+                            <Form.Control defaultValue={this.state.userName} onChange={e => this.handleInputChange(e)} />
+                            <Button disabled variant="outline-dark" onClick={(e) => { this.updateDisplayName(e) }}>
+                                Change Display Name
+                            </Button>
+                        </InputGroup>
+                    </Col>
                 </Row>
-            </>
+            </div>
         )
     }
 }

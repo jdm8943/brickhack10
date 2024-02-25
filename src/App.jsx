@@ -19,6 +19,12 @@ class App extends Component {
         };
     }
 
+    updateDisplayName = (newName) => {
+        this.setState({
+            displayName: newName
+        })
+    }
+
     processUserFirestore = () => {
         const usersRef = collection(this.state.firestoredb, "Users");
         const dref = doc(usersRef, this.state.uid)
@@ -39,8 +45,9 @@ class App extends Component {
                     }
                     setDoc(dref, newUser)
                         .then(() => {
-                            this.state.userRef = dref;
-                            console.log("User written with ID:", dref.id);
+                            this.setState({
+                                userRef: dref
+                            }, () => {console.log("User written with ID:", dref.id)})
                         })
                         .catch((error) => {
                             console.error("Error adding document:", error);
@@ -73,6 +80,13 @@ class App extends Component {
         );
 
     }
+
+    // updateUserInfo = (newName, newRef) => {
+    //     this.setState({
+    //         displayName: newName,
+    //         userRef: newRef
+    //     })
+    // }
 
     render() {
         return (!this.state.uid ? <LoginPage loginSuccessful={this.loginSuccessful}></LoginPage> : this.state.isInstructor ? <InstructorPage {...this.state} /> : <StudentPage {...this.state} />
