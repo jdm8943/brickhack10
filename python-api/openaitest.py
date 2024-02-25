@@ -1,10 +1,16 @@
 from openai import OpenAI
 
+f = open("openaikeys.txt", "r")
+lines = f.readlines()
+
+api_key1 = (lines[0].split("="))[1].strip()
+org1 = (lines[1].split("="))[1].strip()
+print(api_key1, org1)
+
 client = OpenAI(
-    api_key = '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',
-    organization='org-VEcJw5wbLHVTpSGta2F3nGXr',
+    api_key = api_key1,
+    organization = org1,
 )
-#api key: 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
 
 response = client.chat.completions.create(
   model="gpt-3.5-turbo-0125",
