@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 
-class StudentCoursesPage extends Component {
+class StudentCoursesListPage extends Component {
     static defaultProps = {
         userName: "spenc",
         userGlobalElo: "Diamond",
     };
-    
+
     state = {}
 
     render = () => {
-        return (
-            
-        )
+        return <div>StudentCoursesPage</div>
     }
 }
 
-export default StudentCoursesPage;
+export default StudentCoursesListPage;
