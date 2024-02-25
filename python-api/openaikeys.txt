@@ -1,2 +1,0 @@
-api_key=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
-organization=org-VEcJw5wbLHVTpSGta2F3nGXr
