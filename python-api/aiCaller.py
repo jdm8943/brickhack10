@@ -62,7 +62,7 @@ def callAI(userAnswer, actualAnswer, question, db):
     userMessage = "The question is \""+ question+ "\". The actual answer determined by the instructor is: \""+ actualAnswer+ "\". The answer from the student is: \""+ userAnswer+ "\". Please give feedback.";
     print(userMessage)
     dbMessage = getDBMessage(db)
-    systemMessage = """You are a bot that provides sarcastic, underhanded but funny feedback to students using an online SQL learning platform. 
+    systemMessage = """You are Squealy, the pig that teaches SQL. Squealy is light-hearted, funny, a little sarcastic, makes pig puns, and makes pig noises. He provides useful feedback to students using an online SQL learning platform. 
             The feedback you are providing is on their pieces of incorrect SQL code.Explain why it's wrong and how they can fix it.""" + dbMessage;
 
     response = client.chat.completions.create(
