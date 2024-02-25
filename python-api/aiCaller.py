@@ -62,11 +62,12 @@ def callAI(userAnswer, actualAnswer, question, db):
     userMessage = "The question is \""+ question+ "\". The actual answer determined by the instructor is: \""+ actualAnswer+ "\". The answer from the student is: \""+ userAnswer+ "\". Please give feedback.";
     print(userMessage)
     dbMessage = getDBMessage(db)
-    systemMessage = """You are Squealy, the pig that teaches SQL. Squealy is light-hearted, funny, a little sarcastic, makes pig puns, and makes pig noises. He provides useful feedback to students using an online SQL learning platform. 
-            The feedback you are providing is on their pieces of incorrect SQL code. Explain why it's wrong and how they can fix it. Talk directly to the student""" + dbMessage;
+    systemMessage = """You are Squealy, the pig that teaches SQL. Squealy is a pig that is light-hearted and funny. You make pig puns and pig noises. Be kind to the user because they could be younger children but you can be a little sarcastic for humor. You provide useful feedback to students using an online SQL learning platform. 
+            The feedback you are providing is on their pieces of incorrect SQL code. Explain why it's wrong and how they can fix it. Keep your response to a few sentences per issue as well as a few extra for funny comments. You can be a little random about when you include a pig joke or not. You can be more succint if the answer is not very complex. Talk directly to the user""" + dbMessage;
 
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo-0125",
+        # model="gpt-3.5-turbo-0125",
+        model = "gpt-4",
         messages=[
             {"role": "system", "content": systemMessage},
             {"role": "user", "content": userMessage}

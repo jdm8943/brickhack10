@@ -5,7 +5,7 @@ lines = f.readlines()
 
 api_key1 = (lines[0].split("="))[1].strip()
 org1 = (lines[1].split("="))[1].strip()
-print(api_key1, org1)
+# print(api_key1, org1)
 
 client = OpenAI(
     api_key = api_key1,
