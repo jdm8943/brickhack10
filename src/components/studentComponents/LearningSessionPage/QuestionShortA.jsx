@@ -43,7 +43,9 @@ class QuestionShortA extends Question {
                 description: this.props.question.questionText,
                 db: this.state.database
             }
-            this.sendQueryToBack(pl);
+            this.sendQueryToBack(pl).then(res => {
+                res === null ? this.props.displaySuccess() : this.props.displayFailure(res)
+            });
             // this.setState({
             //     postPayload: {
             //         cmd: this.state.userInput,
@@ -88,7 +90,7 @@ class QuestionShortA extends Question {
 
             const responseData = await response.json();
             console.log(responseData)
-            this.setState({ loading: false });
+            this.setState({ loading: false  });
             return responseData;
 
         } catch (error) {

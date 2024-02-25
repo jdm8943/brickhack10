@@ -140,8 +140,8 @@ class SessionPage extends React.Component {
     renderFailureMessage = () => {
         return (
             <>
-                <h3>Incorrect Answer: Try Again</h3>
-                {this.state.openAiResponse ? <Button type='primary' onClick={() => this.setState({ showOpenAi: true })}>Show OpenAI Suggestion</Button> : <></>}
+                <div>Incorrect Answer: Try Again</div>
+                {this.state.openAiResponse ? <Button type='primary' onClick={() => this.setState({ showOpenAi: true })}>Show SQueaLy Suggestion</Button> : <></>}
             </>
         )
     }
