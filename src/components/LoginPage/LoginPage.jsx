@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SignInButton from '../../firebase/SignInButton';
+import SignInButton from './SignInButton';
 import { Row, Col, ToggleButton } from 'react-bootstrap';
 
 class LoginPage extends Component {
