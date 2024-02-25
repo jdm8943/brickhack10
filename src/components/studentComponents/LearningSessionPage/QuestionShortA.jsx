@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup, Card } from 'react-bootstrap';
+import { Row, Col, Form, FormGroup, Card } from 'react-bootstrap';
 import Question from './Question';
 import { getFirestore, collection, getDocs, query, doc, getDoc, where, setDoc } from "firebase/firestore";
 
@@ -28,7 +28,7 @@ class QuestionShortA extends Question {
                 console.log(tableData)
                 this.setState({ 
                     database: tableData.DBName,
-                    columns: tableData.ColArray
+                    columns: tableData.ColArray.join(",")
                 })
             })
             .catch((e) => {
@@ -111,7 +111,13 @@ class QuestionShortA extends Question {
                 <Card.Header as={"h3"}>
                     {this.props.question.questionText}
                 </Card.Header>
-                <Card.Subtitle>{this.state.ColArray}</Card.Subtitle>
+                <Card.Subtitle>
+                    <Row>
+                        <Col>
+                            <p>Columns: {this.state.columns}</p>
+                        </Col>
+                    </Row>
+                </Card.Subtitle>
                 <Card.Body style={{ backgroundColor: "var(--background)" }}>
                     <Form>
                         <FormGroup>
