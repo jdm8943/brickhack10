@@ -38,7 +38,7 @@ class App extends Component {
                         displayName: this.state.displayName,
                         email: this.state.email,
                         uid: this.state.uid,
-                        elo: 0,
+                        ELO: 0,
                         type: (this.state.isInstructor ? "instructor" : "student"),
                         classCodes: [],
                         questionTags: [],
