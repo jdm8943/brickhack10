@@ -1,20 +1,38 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import Question from './Question';
+import { DocumentReference } from '@firebase/firestore';
 
 class QuestionMC extends Question {
     constructor(props) {
         super(props);
         this.state = {
-            optionSelectedString: "", 
-            indexChecked:  -1,
+            optionSelectedString: "",
+            indexChecked: -1,
             correct: false,  // Indicates if the option that is currently checked is the correct answer
+            netELO: 0
         };
     }
 
     CheckAnswer = () => {
-        (this.state.correct ? this.props.displaySuccess() : this.props.displayFailure(null));
-        (this.state.correct ? console.log("correct answer from check answer") : console.log("wrong answer from check answer"));
+        if (this.state.correct) {
+            console.log("correct answer from check answer")
+            this.props.displaySuccess()
+        } else {
+            console.log("wrong answer from check answer")
+            this.props.displayFailure(null)
+        }
+        this.props.updateNetELO(this.state.correct, this.props.question.format)
+
+    }
+
+    updateELO = (correct) => {
+        const newElo = this.state.netELO
+        if (correct) {
+            this.setState({
+                netELO: this.state.netELO + 5
+            })
+        }
     }
 
     handleChange = (event, idxChecked, optionString) => {
@@ -22,7 +40,7 @@ class QuestionMC extends Question {
         // console.log(event.target.checked);
         console.log(idxChecked);
         this.setState(
-            { 
+            {
                 indexChecked: idxChecked,
                 optionSelectedString: optionString,
                 correct: (idxChecked === this.props.question.answerIdx),
@@ -31,7 +49,7 @@ class QuestionMC extends Question {
                 console.log(this.props.question)
             }
         );
-        
+
     }
 
     render() {

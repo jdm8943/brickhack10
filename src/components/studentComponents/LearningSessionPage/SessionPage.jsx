@@ -20,11 +20,27 @@ class SessionPage extends React.Component {
             showTryAgainMessage: false,
             openAiResponse: null,
             showOpenAi: false,
+            sessionNetELO: 0
         }
     }
 
     componentDidMount = () => {
         this.populateQuestions();
+    }
+
+    updateNetELO = (correct, format) => {
+        const prevNetElo = this.state.sessionNetELO;
+        if (correct) {
+            (format === "multiple choice" ? 
+            this.setState({sessionNetELO: prevNetElo+5}) : 
+            this.setState({sessionNetELO: prevNetElo+10})
+            )
+        } else {
+            (format === "multiple choice" ? 
+            this.setState({sessionNetELO: prevNetElo-5}) : 
+            this.setState({sessionNetELO: prevNetElo-3})
+            )
+        }
     }
 
     createMCQuestion = (question) => {
@@ -33,6 +49,7 @@ class SessionPage extends React.Component {
                 displaySuccess={this.answerCorrect}
                 displayFailure={this.answerFailure}
                 question={question}
+                updateNetELO={this.updateNetELO}
             />
         )
     }
@@ -53,6 +70,7 @@ class SessionPage extends React.Component {
                 displaySuccess={this.answerCorrect}
                 displayFailure={this.answerFailure}
                 question={question}
+                updateNetELO={this.updateNetELO}
                 {...this.props}
             />
         )
@@ -63,7 +81,7 @@ class SessionPage extends React.Component {
             , where("subject", "==", this.state.subjectPref)
             , where("difficulty", "==", this.state.difficultyPref)
             // for testing
-            , where("format", "==", "short answer")
+            //, where("format", "==", "short answer")
         )
 
         getDocs(quesQuery)
@@ -153,6 +171,14 @@ class SessionPage extends React.Component {
         )
     }
 
+    renderNetELO = () => {
+        return (
+            <>
+                <p>Net ELO for this session: {this.state.sessionNetELO}</p>
+            </>
+        )
+    }
+
     render = () => {
         return (
             <>
@@ -174,6 +200,11 @@ class SessionPage extends React.Component {
                 <Row>
                     <Col>
                         {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        {this.state.sessionNetELO ? this.renderNetELO() : <></>}
                     </Col>
                 </Row>
             </>
