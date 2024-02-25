@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import StudentPage from './components/studentComponents/StudentPage/StudentPage.jsx';
 import InstructorPage from './components/instructorComponents/InstructorPage/InstructorPage.jsx';
-import LoginPage from './LoginPage/LoginPage.jsx';
+import LoginPage from './components/LoginPage/LoginPage.jsx';
 
 
 class App extends Component {

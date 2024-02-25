@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import StudentProfilePage from '../StudentProfilePage/StudentProfilePage.jsx';
 import SessionPage from '../LearningSessionPage/SessionPage.jsx'
 import StudentCoursesPage from '../StudentCoursesPage/StudentCoursesPage.jsx';
+import StudentGlobalLeaderboardPage from '../StudentGlobalLeaderboardPage/StudentGlobalLeaderboardPage.jsx';
 
 
-class StudentPage extends Component {
+class StudentPage extends React.Component {
     static defaultProps = {}
     state = {
         page: null,
@@ -20,8 +21,7 @@ class StudentPage extends Component {
                 case "learning":
                     return <SessionPage {...this.props}/>;
                 case "leaderboard":
-                    //TODO: add leaderboard Page
-                    return <></>
+                    return <StudentGlobalLeaderboardPage {...this.props}/>;
             }
     }
 
