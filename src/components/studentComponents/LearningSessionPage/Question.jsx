@@ -15,9 +15,6 @@ class Question extends React.Component {
         question: null,
     }
 
-    DisplayQuestion = () => {
-        return (<div>Implement DisplayQuestionFunction</div>)
-    }
 
     CheckAnswer = (answer) => {
         console.log("Missing implementation of CheckAnswer() function")
@@ -26,7 +23,6 @@ class Question extends React.Component {
     render() {
         return (
             <>
-                {this.DisplayQuestion()}
                 <Button type='primary' onClick={() => this.CheckAnswer(this.state.answer)}>Submit</Button>
             </>
         );
