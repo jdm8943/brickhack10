@@ -14,10 +14,10 @@ Currently, two official plugins are available:
 
 #  Installation
 
-'''
+```
 npm install reactfire
 npm install react-bootstrap
-python -m pip install -r requirements.txt
+python -m pip install -r python-api/requirements.txt
 ```
 Also create a openaikeys.txt inside of python-api/ containing your login credentials.
 
