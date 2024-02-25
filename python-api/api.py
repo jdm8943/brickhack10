@@ -35,7 +35,7 @@ async def root(request: command ):
     
     try:
         cur.execute(request.cmd)
-        return {"message": "You did great"}
+        return {"message": None}
     
     except Exception as e:
         logger.info("SQL command failed! - " + request.cmd)
