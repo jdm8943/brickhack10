@@ -7,14 +7,23 @@ import StudentProfilePage from '../StudentProfilePage/StudentProfilePage.jsx';
 class StudentPage extends Component {
     static defaultProps = {}
     state = {
-        isStudent: true,
-        isLoggedIn: true,
+        page: null,
     }
 
     renderPage = () => {
-        return (
-            <StudentProfilePage/>
-        )
+            switch (this.state.page) {
+                case "profile":
+                    return  <StudentProfilePage {...this.props}/>;
+                case "courses":
+                    //TODO: add courses Page
+                    return <></>
+                case "learning":
+                    //TODO: add learning Page
+                    return <></>
+                case "leaderboard":
+                    //TODO: add leaderboard Page
+                    return <></>
+            }
     }
 
     render = () => {
@@ -25,10 +34,10 @@ class StudentPage extends Component {
                         <Navbar bg="dark" data-bs-theme="dark">
                             <Container>
                                 <Nav className="me-auto">
-                                    <Nav.Link href="#profile">Profile</Nav.Link>
-                                    <Nav.Link href="#courses">Courses</Nav.Link>
-                                    <Nav.Link href="#learning">Learning</Nav.Link>
-                                    <Nav.Link href="#leaderboard">Leaderboard</Nav.Link>
+                                    <Nav.Link href="#profile" onClick={() => this.setState({ page: 'profile' })}>Profile</Nav.Link>
+                                    <Nav.Link href="#courses" onClick={() =>this.setState({page:'courses'})}>Courses</Nav.Link>
+                                    <Nav.Link href="#learning" onClick={() =>this.setState({page:'learning'})}>Learning</Nav.Link>
+                                    <Nav.Link href="#leaderboard" onClick={() =>this.setState({page:'leaderboard'})}>Leaderboard</Nav.Link>
                                 </Nav>
                             </Container>
                         </Navbar>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import StudentPage from './StudentPage/StudentPage.jsx';
+import InstructorPage from './InstructorPage/InstructorPage.jsx';
 import LoginPage from './LoginPage/LoginPage.jsx';
 
 
@@ -19,7 +20,7 @@ class App extends Component {
   }
 
   render(){
-    return ( !this.state.uid ? <LoginPage loginSuccessful={this.loginSuccessful}></LoginPage> : this.state.isInstructor ? <InstructorPage/> : <StudentPage/>
+    return ( !this.state.uid ? <LoginPage loginSuccessful={this.loginSuccessful}></LoginPage> : this.state.isInstructor ? <InstructorPage {...this.state}/> : <StudentPage {...this.state}/>
     );
   }
 }
