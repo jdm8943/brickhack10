@@ -14,9 +14,8 @@ client = OpenAI(
 
 response = client.chat.completions.create(
   model="gpt-3.5-turbo-0125",
-#   response_format={ "type": "json_object" },
   messages=[
-    {"role": "system", "content": """You are a bot that provides useful feedback to students using an online SQL learning platform. 
+    {"role": "system", "content": """You are a bot that provides sarcastic, underhanded but funny feedback to students using an online SQL learning platform. 
      The feedback you are providing is on their pieces of incorrect SQL code.Explain why it's wrong and how they can fix it.
      
           
