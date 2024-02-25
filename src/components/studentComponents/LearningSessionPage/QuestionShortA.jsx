@@ -21,6 +21,7 @@ class QuestionShortA extends Question {
     }
 
     componentDidMount = () => {
+        console.log(this.props)
         getDoc(this.props.question.tableRef)
             .then((tableSnapshot) => {
                 console.log(tableSnapshot.data())

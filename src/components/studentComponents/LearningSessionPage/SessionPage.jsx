@@ -141,7 +141,7 @@ class SessionPage extends React.Component {
         this.setState((prevState) => {
             return {
                 curQuestionIndex: prevState.curQuestionIndex + 1,
-                currentQuestion: formatToElementRender[this.state.questions[prevState.curQuestionIndex].format](prevState.curQuestionIndex),
+                currentQuestion: formatToElementRender[this.state.questions[prevState.curQuestionIndex].format](this.state.questions[prevState.curQuestionIndex]),
                 showTryAgainMessage: false,
                 openAiResponse: null,
                 showNextQuestionButton: false,
