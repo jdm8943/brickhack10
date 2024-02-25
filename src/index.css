@@ -48,7 +48,7 @@ h1 {
   /* background-color: var(--primary) !important; */
   border: var(--secondary) 1px solid !important;
   color: var(--color) !important;
-  background-image: radial-gradient(ellipse, var(--primary), var(--secondary)) !important;
+  background-image: radial-gradient(ellipse, var(--primary) 30%, var(--secondary) 100%) !important;
 }
 
 .btn:hover {
