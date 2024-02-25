@@ -1,37 +1,54 @@
 import React from 'react';
-import Question from './Question'; // Import the QuizQuestion component
+import QuestionPage from './QuestionPage'; // Import the QuizQuestion component
+import { collection, where, getDocs, query } from 'firebase/firestore';
+
 
 class SessionPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      questions: [
-        { 
-            question: 'What is the capital of France?', 
-            answer: 'Paris', 
-            options: ['Paris', 'Berlin', 'Chateaux', 'London'] 
-        },
-        { 
-            question: 'What is the tallest mountain in the world?', 
-            answer: 'Mount Everest', 
-            options: ['Mount Washington', 'Mount St. Helen', 'Mount Fuji', 'Mount Everest']  }
-        // Add more questions as needed
-      ],
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            difficultyPref: "easy",
+            subjectPref: "sql",
+            questions: null,
+        }
+    }
 
-  render() {
-    return (
-      <div className="quiz-session">
-        <h1>Quiz Session</h1>
-        <div className="quiz-questions">
-          {this.state.questions.map((question, index) => (
-            <Question key={index} {...question} />
-          ))}
-        </div>
-      </div>
-    );
-  }
+    componentDidMount = () => {
+        this.populateQuestions();
+    }
+
+    populateQuestions = () => {
+        const quesQuery = query(collection(this.props.firestoredb, "Questions")
+            , where("subject", "==", this.state.subjectPref)
+            , where("difficulty", "==", this.state.difficultyPref))
+
+        getDocs(quesQuery)
+            .then((questionsSnapshot) => {
+                const questionDocs = []
+                questionsSnapshot.forEach((qDoc) => {
+                    questionDocs.push({ ...qDoc.data(), id: qDoc.id });
+                })
+                return questionDocs;
+            })
+            .then((questions) => {
+                this.setState(
+                    { questions: questions },
+                    () => {console.log(questions)}
+                )
+            }).catch((error) => {
+                console.log("Error getting questions: ", error);
+            })
+
+
+    }
+
+    render = () => {
+        return (
+            <>
+            
+            </>
+        );
+    }
 }
 
 export default SessionPage;
