@@ -28,7 +28,6 @@ class LoginPage extends Component {
             <Row>
                 <Col>
                     <ToggleButton
-                        variant={this.state.isInstructor ? 'outline-primary' : 'primary'}
                         onClick={this.isInstructorClicked}
                         style={{marginTop: "10px"}}
                         >

@@ -44,26 +44,20 @@ h1 {
   line-height: 1.1;
 }
 
-/* TODO CHANGE TO USE ALL BUTTONS INSTEAD OF CLASS ? */
-.btn-primary {
-  background-color: var(--primary);
-  border: var(--secondary) 2px solid;
-  color: var(--color);
+.btn {
+  background-color: var(--primary) !important;
+  border: var(--secondary) 2px solid !important;
+  color: var(--color) !important;
 }
 
-.btn-check+.btn-primary:hover {
-  background-color: var(--primary);
-  border: var(--secondary) 2px solid;
-  filter: brightness(1.15);
-  color: black;
+.btn:hover {
+  background-color: var(--primary) !important;
+  border: var(--secondary) 2px solid !important;
+  filter: brightness(1.15) !important;
+  color: black !important;
 }
 
-.btn-primary:hover {
-  color: white;
-}
-  
-
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -74,15 +68,18 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
+
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -93,4 +90,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
