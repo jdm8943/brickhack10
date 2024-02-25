@@ -7,7 +7,7 @@ class QuestionShortA extends Question {
     constructor(props) {
         super(props);
         this.state = {
-            postAnswerUrl: "127.0.0.1:8000/check_cmd",
+            postAnswerUrl: "http://127.0.0.1:8000/check_cmd",
             postPayload: null,
             userInput: "",
             matchGeneralAnswer: false,  // Indicates if the option that is currently checked is the correct answer
@@ -87,6 +87,7 @@ class QuestionShortA extends Question {
             }
 
             const responseData = await response.json();
+            console.log(responseData)
             this.setState({ loading: false });
             return responseData;
 
