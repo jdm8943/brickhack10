@@ -44,6 +44,7 @@ h1 {
   line-height: 1.1;
 }
 
+/* TODO CHANGE TO USE ALL BUTTONS INSTEAD OF CLASS ? */
 .btn-primary {
   background-color: var(--primary);
   border: var(--secondary) 2px solid;
@@ -52,6 +53,7 @@ h1 {
 
 .btn-check+.btn-primary:hover {
   background-color: var(--primary);
+  border: var(--secondary) 2px solid;
   filter: brightness(1.15);
   color: black;
 }
