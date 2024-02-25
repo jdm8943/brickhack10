@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardText } from 'react-bootstrap';
+import { Card, CardImg, CardBody, CardTitle, CardText, Button } from 'react-bootstrap';
 
 class StudentCourseCard extends React.Component {
   constructor(props) {
@@ -23,6 +23,7 @@ class StudentCourseCard extends React.Component {
           <Card.Subtitle>{this.state.courseInfo.displayName}</Card.Subtitle>   
           <Card.Text>{this.state.courseInfo.description}</Card.Text>
         </Card.Body>  
+        <Button disabled variant="primary">Go to Course</Button>
       </Card>
       );
   }
