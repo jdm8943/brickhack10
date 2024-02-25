@@ -2,6 +2,7 @@ import React from 'react';
 import Question from './Question'; // Import the QuizQuestion component
 import QuestionMC from './QuestionMC';
 import { collection, where, getDocs, query } from 'firebase/firestore';
+import { Button } from 'react-bootstrap';
 
 
 class SessionPage extends React.Component {
@@ -16,6 +17,7 @@ class SessionPage extends React.Component {
             showNextQuestionButton: false,
             showTryAgainMessage: false,
             openAiResponse: null,
+            showOpenAi: false,
         }
     }
 
@@ -90,11 +92,27 @@ class SessionPage extends React.Component {
         )
     }
 
+    renderFailureMessage = () => {
+        return (
+            <>
+            <h3>Incorrect Answer: Try Again</h3>
+            {this.state.openAiResponse ? <Button type='primary' onClick={() => this.setState({showOpenAi: true})}>Show OpenAI Suggestion</Button> : <></>}
+            </>
+        )
+    }
+
+    renderOpenAiMessage = () => {
+        return (
+            <h3>{this.state.openAiResponse}</h3>
+        )
+    }
+
     render = () => {
         return (
             <>
                 {this.state.currentQuestion}
                 {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
+                {this.state.showOpenAi ? this.renderOpenAiMessage : <></>}
             </>
         );
     }
