@@ -24,10 +24,10 @@ class StudentGlobalLeaderboardPage extends React.Component {
                 })
                 return uDocs;
             })
-            .then((users) => {
+            .then((usersar) => {
                 this.setState(
-                    { users: users },
-                    () => {console.log(users)}
+                    { users: usersar },
+                    () => {console.log(this.state.users)}
                 )
             }).catch((error) => {
                 console.log("Error getting users: ", error);
