@@ -4,7 +4,7 @@ import QuestionMC from './QuestionMC';
 import QuestionBlanks from './QuestionBlanks'
 import QuestionShortA from './QuestionShortA'
 import { collection, where, getDocs, query } from 'firebase/firestore';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button, Row, Col, Card } from 'react-bootstrap';
 
 
 class SessionPage extends React.Component {
@@ -21,6 +21,7 @@ class SessionPage extends React.Component {
             openAiResponse: null,
             showOpenAi: false,
             loadingResponse: false,
+            renderCard: null,
         }
     }
 
@@ -106,11 +107,11 @@ class SessionPage extends React.Component {
     }
 
     answerCorrect = () => {
-        this.setState({ showNextQuestionButton: true, showTryAgainMessage: false, openAiResponse: null, showOpenAi: false })
+        this.setState({ showNextQuestionButton: true, showTryAgainMessage: false, openAiResponse: null, showOpenAi: false, renderCard: true })
     }
 
     answerFailure = (openAiResponse) => {
-        this.setState({ showTryAgainMessage: true, openAiResponse: openAiResponse, showNextQuestionButton: false })
+        this.setState({ showTryAgainMessage: true, openAiResponse: openAiResponse, showNextQuestionButton: false, renderCard: true })
     }
 
     nextButtonClicked = (e) => {
@@ -126,6 +127,7 @@ class SessionPage extends React.Component {
                 showTryAgainMessage: false,
                 openAiResponse: null,
                 showNextQuestionButton: false,
+                renderCard: false,
             }
         })
     }
@@ -142,7 +144,14 @@ class SessionPage extends React.Component {
         return (
             <>
                 <div>Incorrect Answer: Try Again</div>
-                {this.state.openAiResponse ? <Button type='primary' onClick={() => this.setState({ showOpenAi: true })}>Show SQueaLy Suggestion</Button> : <></>}
+            </>
+        )
+    }
+
+    renderSuccessMessage = () => {
+        return (
+            <>
+                <div>Correct</div>
             </>
         )
     }
@@ -155,6 +164,7 @@ class SessionPage extends React.Component {
     }
 
     render = () => {
+        console.log(this.state.renderCard)
         return (
             <>
                 <Row>
@@ -162,21 +172,22 @@ class SessionPage extends React.Component {
                         {this.state.currentQuestion}
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        {this.state.showTryAgainMessage ? this.renderFailureMessage() : <></>}
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
-                    </Col>
-                </Row>
+                {this.state.renderCard &&
+                    <Row>
+                        <Col>
+                            <Card style={{margin: "10px"}}>
+                                <Card.Header>
+                                    {this.state.showTryAgainMessage ? this.renderFailureMessage() : <></>}
+                                    {this.state.showNextQuestionButton ? this.renderSuccessMessage() : <></>}
+                                </Card.Header>
+                                {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
+                                {this.state.showTryAgainMessage ? <Button type='primary' onClick={() => this.setState({ showOpenAi: true })}>Show SQueaLy Suggestion</Button> : <></>}
+                                {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
+
+                            </Card>
+                        </Col>
+                    </Row>
+                }
             </>
         );
     }
