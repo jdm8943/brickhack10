@@ -26,7 +26,7 @@ class StudentGlobalLeaderboardPage extends React.Component {
             })
             .then((usersar) => {
                 this.setState(
-                    { users: (usersar.filter(user => typeof user === 'object' && user.displayName && user.hasOwnProperty("ELO")).sort((a,b)=>b["ELO"]-a["ELO"]))},
+                    { users: (usersar.filter(user => typeof user === 'object' && user.displayName && user.hasOwnProperty("ELO")).sort((a,b)=>b["ELO"]-a["ELO"])).slice(0,10)},
                     // { users: usersar },
                     () => {console.log(this.state.users)}
                 )
