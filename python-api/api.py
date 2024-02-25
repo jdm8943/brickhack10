@@ -45,6 +45,7 @@ async def root(request: command ):
         # very basic check to see if the output of the two commands is the same
         # should expand to actually check each value, not just assume they come out in the same order
         if userQuery == correctQuery:
+            con.close()
             os.remove(os.path.join("dbs", request.db + "-local.db"))
             return {"message": None}
     
@@ -53,6 +54,7 @@ async def root(request: command ):
     
     returnMessage = callAI(request.cmd, request.correct_cmd, request.description, request.db)
     
+    con.close()
     os.remove(os.path.join("dbs", request.db + "-local.db"))
     
     return {"message": returnMessage}
