@@ -210,6 +210,7 @@ class SessionPage extends React.Component {
                                     {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
                                     {this.state.showTryAgainMessage ? <Button type='primary' onClick={() => this.setState({ showOpenAi: true })}>Show SQueaLy Suggestion</Button> : <></>}
                                     {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
+                                    {this.state.sessionNetELO ? this.renderNetELO() : <></>}
                                 </Card.Body>
                             </Card>
                         </Col>
