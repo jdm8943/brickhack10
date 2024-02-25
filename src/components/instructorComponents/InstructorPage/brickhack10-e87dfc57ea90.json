@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "brickhack10",
+  "private_key_id": "e87dfc57ea90e10c721144a409ca9d83a09ad237",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCrT5fP1FZ21yuw\n+e14hSGcpQDAkOHCxLHWm3he9L494aIESKslsV1teJ/IIBpLBUMkr9jve+yMrUY8\n4ZjZfzUmq5slnlDLw5h+qPfEcNGwX4oCEKD7a0QP4uPWpOirWR4oSFMB/vSF1iGb\n8m0SKE+B1dslGMz/fnxcXv1UhEORXXcu/rEl3/3ZN52aI0KavRaWCt6QzpsHDQat\nbsNftUnlItzVsC1rCFQtPkZ0kzRoebY42ZN1FTJHZuMSGGgDSaXhe5+hQodEV2ie\n98R0bilCRsctXbDhELOl6wzBiR6PBdtuA+BseeVco0U4zEELvwPopNdJuu1uDx/u\nDMhJlHOzAgMBAAECggEAQ+p0J0LpXIgFnE4ZZVRydOW9nJpTxqGwV4KfgBXLbkEL\nuGMO5wygG4xc3DxN8DwP2HWWrasVptfzJqPRsziJW+FgytMu+Pl8dYqLX+fSWfgm\ngJcTG1n1S88JwMj0LSpRmGrD7eCkFINGI8tCjpZInxKnpNdmPkxpBT3rdRxSpUgg\ncoB/4bGQ+kJ8mq4ywnG21Ug7uWp6LRuye6R+avwnzC917JE+wuN3UsfZib3FbScJ\nxmiveaSGEae87qSOyI4AnUJucGHuiWhtvRQEVoiXgds9f51DM6XeOBbhrPXFSCwv\nLHSH9F3gg5U//TS+uAlJwhsVFTW0aY7DcIxdKkmPoQKBgQDdJYgXQVs+2hJZgVeE\nIuDPxpY/JT3k+KYuQk68j2deZAPiwW4F3yfGoVceMFHryRba+v/TjlP9ZmCiPKT2\nLidcBzDuaxl7v9wF1kwkaETM+aQhAO2hJ9mMe+SZhHgYRyF7/tSGW6VAimMBU+aA\nkYKaSwRuIcLJi+RAeVITLWGCOQKBgQDGT17kH4D+zmX4yfbTpVFCHExagw2DUUj0\nmr6orvnYva9IT705iV9MrA0vx1N7AGnm6biqGnaQMdIbA6qbddQGTteXvlMlxbgH\njNh2Q/Wr3yRcK1iun5FFBONqUDTY+jdrjBOpMiy9jr2jgL6d2K/A5jwYhDmMRe1X\nUHjpgHm1SwKBgQC5M+ZeO3DUGUNGzChj0+XcfB518ZV9PbPGh+dyyNIz3aTXcVDY\nAARKt/HCqYrh4T2P1KcNIGQ8klGZbRplxU9XJfqXoP/tgEceaFLKJrx/wQ3wSdu4\nnCv4GAXhf2woQOHM+yQ3BWdGvt6dTQt8XuA2oV6rcQC1U7+rMy9GOjowGQKBgQCs\ng5eU9CMPhxYGXAuxCnup+1wg0SkMN8Yzo/qAW9dVyY2WZmfCidKxrGq8SbZBppZ6\nHpBayjKiNfUFMydTnikYY7YBd7x1e48gYlJcb7pkDfZfiAXZw05osFv1vFh8+Q8F\nLBJeehuZu3cVqYYpYrtiH+ffnAdEFADomETXPMCkCQKBgHq7wMRyJ6cue4Ui4c3+\nZnLZegQUvT7LnZ9QJmx6ljJfPEZBV6sGzLl/R+eY31YXOwZrZoQzhixPu/bQCbm9\nPt/p/UwQeHFdbhcjESwliQwJgiZVGnfUogToFPbcoZITmJ6dRy8tKjJK8S2ofKQZ\nImyF5t0YHeLhCvtvtkoAkAZ2\n-----END PRIVATE KEY-----\n",
+  "client_email": "squealy@brickhack10.iam.gserviceaccount.com",
+  "client_id": "100610804902126482547",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/squealy%40brickhack10.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
