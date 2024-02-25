@@ -4,7 +4,7 @@ import QuestionMC from './QuestionMC';
 import QuestionBlanks from './QuestionBlanks'
 import QuestionShortA from './QuestionShortA'
 import { collection, where, getDocs, query } from 'firebase/firestore';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button, Row, Col, Card } from 'react-bootstrap';
 
 
 class SessionPage extends React.Component {
@@ -20,11 +20,29 @@ class SessionPage extends React.Component {
             showTryAgainMessage: false,
             openAiResponse: null,
             showOpenAi: false,
+            loadingResponse: false,
+            renderCard: null,
+            sessionNetELO: 0
         }
     }
 
     componentDidMount = () => {
         this.populateQuestions();
+    }
+
+    updateNetELO = (correct, format) => {
+        const prevNetElo = this.state.sessionNetELO;
+        if (correct) {
+            (format === "multiple choice" ? 
+            this.setState({sessionNetELO: prevNetElo+5}) : 
+            this.setState({sessionNetELO: prevNetElo+10})
+            )
+        } else {
+            (format === "multiple choice" ? 
+            this.setState({sessionNetELO: prevNetElo-5}) : 
+            this.setState({sessionNetELO: prevNetElo-3})
+            )
+        }
     }
 
     createMCQuestion = (question) => {
@@ -33,6 +51,7 @@ class SessionPage extends React.Component {
                 displaySuccess={this.answerCorrect}
                 displayFailure={this.answerFailure}
                 question={question}
+                updateNetELO={this.updateNetELO}
             />
         )
     }
@@ -53,6 +72,7 @@ class SessionPage extends React.Component {
                 displaySuccess={this.answerCorrect}
                 displayFailure={this.answerFailure}
                 question={question}
+                updateNetELO={this.updateNetELO}
                 {...this.props}
             />
         )
@@ -63,7 +83,7 @@ class SessionPage extends React.Component {
             , where("subject", "==", this.state.subjectPref)
             , where("difficulty", "==", this.state.difficultyPref)
             // for testing
-            , where("format", "==", "short answer")
+            //, where("format", "==", "short answer")
         )
 
         getDocs(quesQuery)
@@ -105,11 +125,11 @@ class SessionPage extends React.Component {
     }
 
     answerCorrect = () => {
-        this.setState({ showNextQuestionButton: true, showTryAgainMessage: false, openAiResponse: null, showOpenAi: false })
+        this.setState({ showNextQuestionButton: true, showTryAgainMessage: false, openAiResponse: null, showOpenAi: false, renderCard: true })
     }
 
     answerFailure = (openAiResponse) => {
-        this.setState({ showTryAgainMessage: true, openAiResponse: openAiResponse, showNextQuestionButton: false })
+        this.setState({ showTryAgainMessage: true, openAiResponse: openAiResponse, showNextQuestionButton: false, renderCard: true })
     }
 
     nextButtonClicked = (e) => {
@@ -125,6 +145,7 @@ class SessionPage extends React.Component {
                 showTryAgainMessage: false,
                 openAiResponse: null,
                 showNextQuestionButton: false,
+                renderCard: false,
             }
         })
     }
@@ -141,7 +162,14 @@ class SessionPage extends React.Component {
         return (
             <>
                 <div>Incorrect Answer: Try Again</div>
-                {this.state.openAiResponse ? <Button type='primary' onClick={() => this.setState({ showOpenAi: true })}>Show SQueaLy Suggestion</Button> : <></>}
+            </>
+        )
+    }
+
+    renderSuccessMessage = () => {
+        return (
+            <>
+                <div>Correct</div>
             </>
         )
     }
@@ -153,7 +181,16 @@ class SessionPage extends React.Component {
         )
     }
 
+    renderNetELO = () => {
+        return (
+            <>
+                <p>Net ELO for this session: {this.state.sessionNetELO}</p>
+            </>
+        )
+    }
+
     render = () => {
+        console.log(this.state.renderCard)
         return (
             <>
                 <Row>
@@ -161,21 +198,24 @@ class SessionPage extends React.Component {
                         {this.state.currentQuestion}
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        {this.state.showTryAgainMessage ? this.renderFailureMessage() : <></>}
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
-                    </Col>
-                </Row>
+                {this.state.renderCard &&
+                    <Row>
+                        <Col>
+                            <Card style={{ margin: "10px" }}>
+                                <Card.Header>
+                                    {this.state.showTryAgainMessage ? this.renderFailureMessage() : <></>}
+                                    {this.state.showNextQuestionButton ? this.renderSuccessMessage() : <></>}
+                                </Card.Header>
+                                <Card.Body>
+                                    {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
+                                    {this.state.showTryAgainMessage ? <Button type='primary' onClick={() => this.setState({ showOpenAi: true })}>Show SQueaLy Suggestion</Button> : <></>}
+                                    {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
+                                    {this.state.sessionNetELO ? this.renderNetELO() : <></>}
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                }
             </>
         );
     }

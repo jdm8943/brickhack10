@@ -114,7 +114,6 @@ class QuestionShortA extends Question {
                                 placeholder="Write SQL command here."
                                 onChange={(e) => this.handleInput(e)}
                             />
-
                         </FormGroup>
                     </Form>
                     {super.render()}
