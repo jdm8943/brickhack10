@@ -14,14 +14,14 @@ npm install reactfire
 npm install react-bootstrap
 - uses reactfire framework
 
-# Firebase Data Model
+# Firestore Data Model
 
 ## ========= User ============
     uid: string
     type: string
     email: string
     ELO: number
-    classCodes: string[]
+    classCodes: Course[] (reference's)
     questionTags: string[]
     [...classId: string = rank: number]
 
@@ -34,8 +34,9 @@ npm install react-bootstrap
             format: string
 
 ## ========= Courses ===========
-    instructor: uid of User
-    students: [] of uid's
-    courseCode: string
+    instructor: uid reference of User
+    name: string
+    students: [] of uid reference's
     difficultyTags: string[]
     subject: string
+    description: string

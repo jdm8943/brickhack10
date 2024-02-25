@@ -18,7 +18,7 @@ class StudentPage extends React.Component {
                     return  <StudentProfilePage {...this.props}/>;
                 case "courses":
                     return <StudentCoursesPage {...this.props}/>;
-                case "learning":
+                case "learning": 
                     return <SessionPage {...this.props}/>;
                 case "leaderboard":
                     return <StudentGlobalLeaderboardPage {...this.props}/>;
