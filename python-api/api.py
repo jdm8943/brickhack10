@@ -4,6 +4,7 @@ import sqlite3
 from pydantic import BaseModel
 from aiCaller import callAI
 import os
+import shutil
 
 class command(BaseModel):
     cmd: str
@@ -30,7 +31,9 @@ app.add_middleware(
 )
 @app.post("/check_cmd")
 async def root(request: command ):
-    con = sqlite3.connect(os.path.join("dbs", request.db + ".db"))
+    shutil.copyfile(os.path.join("dbs", request.db + ".db"), os.path.join("dbs", request.db + "-local.db"))
+    
+    con = sqlite3.connect(os.path.join("dbs", request.db + "-local.db"))
     cur = con.cursor()
     
     try:
@@ -42,12 +45,15 @@ async def root(request: command ):
         # very basic check to see if the output of the two commands is the same
         # should expand to actually check each value, not just assume they come out in the same order
         if userQuery == correctQuery:
+            os.remove(os.path.join("dbs", request.db + "-local.db"))
             return {"message": None}
     
     except Exception as e:
         logger.info("SQL command failed! - " + request.cmd)
     
     returnMessage = callAI(request.cmd, request.correct_cmd, request.description, request.db)
+    
+    os.remove(os.path.join("dbs", request.db + "-local.db"))
     
     return {"message": returnMessage}
     
