@@ -26,12 +26,11 @@ npm install react-bootstrap
     [...classId: string = rank: number]
 
 ## ======== Questions =========
-    subjects: collections (sql, relational algebra, python...)
-        Question: Document
-            difficulty: string
-            questionText: string
-            answer: string
-            format: string
+    subject: string
+    difficulty: string : easy, intermediate, challenging
+    questionText: string
+    answer: string
+    format: string
 
 ## ========= Courses ===========
     instructor: uid reference of User
