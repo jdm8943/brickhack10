@@ -34,8 +34,15 @@ async def root(request: command ):
     cur = con.cursor()
     
     try:
-        cur.execute(request.cmd)
-        return {"message": None}
+        userQuery = cur.execute(request.cmd).fetchall()
+        correctQuery = cur.execute(request.correct_cmd).fetchall()
+        logger.info(userQuery)
+        logger.info(correctQuery)
+        
+        # very basic check to see if the output of the two commands is the same
+        # should expand to actually check each value, not just assume they come out in the same order
+        if userQuery == correctQuery:
+            return {"message": None}
     
     except Exception as e:
         logger.info("SQL command failed! - " + request.cmd)
