@@ -27,7 +27,7 @@ npm install react-bootstrap
 
 ## ======== Questions =========
     subject: string
-    difficulty: string
+    difficulty: string : easy, intermediate, challenging
     questionText: string
     answer: string
     format: string
