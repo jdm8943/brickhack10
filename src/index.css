@@ -46,15 +46,18 @@ h1 {
 
 .btn {
   /* background-color: var(--primary) !important; */
+  margin-top: 10px !important;
   border: var(--secondary) 1px solid !important;
   color: var(--color) !important;
   background-image: radial-gradient(ellipse, var(--primary) 30%, var(--secondary) 100%) !important;
 }
 
 .btn:hover {
-  background-color: var(--primary) !important;
+  /* background-color: var(--primary) !important; */
+  margin-top: 10px !important;
   border: var(--secondary) 2px solid !important;
-  filter: brightness(1.15) !important;
+  background-image: radial-gradient(ellipse, var(--primary) 50%, var(--secondary) 100%) !important;
+  filter: brightness(1.05) !important;
   color: black !important;
 }
 
