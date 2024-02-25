@@ -22,27 +22,29 @@ class StudentGlobalLeaderboardPage extends React.Component {
                 usersSnapshot.forEach((uDoc) => {
                     uDocs.push({ ...uDoc.data(), id: uDoc.id });
                 })
+                console.log(uDocs)
                 return uDocs;
             })
             .then((usersar) => {
                 this.setState(
-                    { users: (usersar.filter(user => typeof user === 'object' && user.displayName && user.hasOwnProperty("ELO")).sort((a,b)=>b["ELO"]-a["ELO"])).slice(0,10)},
+                    { users: (usersar.filter(user => typeof user === 'object' && user.displayName && user.hasOwnProperty("ELO")).sort((a, b) => b["ELO"] - a["ELO"])) },
                     // { users: usersar },
-                    () => {console.log(this.state.users)}
+                    () => { console.log(this.state.users) }
                 )
             }).catch((error) => {
                 console.log("Error getting users: ", error);
             })
-        
+
     }
 
-    render(){
+    render() {
         return (
             <div><h1>Student Global Leaderboard</h1>
                 <ol><h5>
-                {/* Use map() to generate JSX for each item */}
-                {this.state.users.map((user, index) => (
-                    <li key={index}>{user.displayName} : {user.ELO}</li>
+                    {/* Use map() to generate JSX for each item */}
+                    {this.state.users.map((user, index) => (
+                        <li key={index} >{user.displayName} : {user.ELO}</li>
+                        
                 ))}</h5>
                 </ol>
             </div>
