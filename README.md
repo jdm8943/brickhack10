@@ -1,3 +1,7 @@
+# Run Instructions
+To run the project, run
+> run.bat
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -10,9 +14,12 @@ Currently, two official plugins are available:
 
 #  Installation
 
+```
 npm install reactfire
 npm install react-bootstrap
-- uses reactfire framework
+python -m pip install -r python-api/requirements.txt
+```
+Also create a openaikeys.txt inside of python-api/ containing your login credentials.
 
 # Firestore Data Model
 
