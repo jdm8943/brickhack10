@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import StudentProfilePage from '../StudentProfilePage/StudentProfilePage.jsx';
 import SessionPage from '../LearningSessionPage/SessionPage.jsx'
-import StudentCoursesPage from '../StudentCoursesPage/StudentCoursesPage.jsx';
+import StudentCoursesListPage from '../StudentCoursesListPage/StudentCoursesListPage.jsx';
 import StudentGlobalLeaderboardPage from '../StudentGlobalLeaderboardPage/StudentGlobalLeaderboardPage.jsx';
 
 
@@ -12,12 +12,16 @@ class StudentPage extends React.Component {
         page: null,
     }
 
+    constructor(props) {
+        super(props);
+    }
+
     renderPage = () => {
             switch (this.state.page) {
                 case "profile":
                     return  <StudentProfilePage {...this.props}/>;
                 case "courses":
-                    return <StudentCoursesPage {...this.props}/>;
+                    return <StudentCoursesListPage {...this.props}/>;
                 case "learning": 
                     return <SessionPage {...this.props}/>;
                 case "leaderboard":
