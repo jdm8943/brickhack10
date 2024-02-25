@@ -20,7 +20,7 @@ class StudentProfilePage extends Component {
                 const uData = usersSnapshot.data()
                 console.log(uData)
                 this.setState({
-                    ELO: uData.elo
+                    ELO: uData.ELO
                 }, () => { console.log(this.state.ELO) })
             })
     }
