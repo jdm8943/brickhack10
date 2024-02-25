@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import InstructorCoursesPage from '../InstructorCoursesPage/InstructorCoursesPage'
+import InstructorSettingsPage from '../InstructorSettingsPage/InstructorSettingsPage'
+import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
+
 
 
 class InstructorPage extends Component {
