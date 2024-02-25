@@ -65,7 +65,7 @@ class SessionPage extends React.Component {
     render = () => {
         return (
             <>
-
+                {this.state.currentQuestion}
             </>
         );
     }
