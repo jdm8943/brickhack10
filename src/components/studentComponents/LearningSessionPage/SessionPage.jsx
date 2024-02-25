@@ -148,7 +148,7 @@ class SessionPage extends React.Component {
 
     renderOpenAiMessage = () => {
         return (
-            <h3>{this.state.openAiResponse}</h3>
+            <div>{this.state.openAiResponse.message}</div>
         )
     }
 
@@ -158,7 +158,7 @@ class SessionPage extends React.Component {
                 {this.state.currentQuestion}
                 {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
                 {this.state.showTryAgainMessage ? this.renderFailureMessage() : <></>}
-                {this.state.showOpenAi ? this.renderOpenAiMessage : <></>}
+                {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
             </>
         );
     }
