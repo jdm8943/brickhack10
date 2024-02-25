@@ -1,10 +1,19 @@
+
+
 :root {
+  --primary: #FFB9CA;
+  --secondary: #EC96B0;
+  --background: #F2F2F2;
+  --text-color: #424242;
+  --bs-body-bg:  var(--background);
+  --bg-color: var(--background);
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--primary);
   background-color: #242424;
 
   font-synthesis: none;
@@ -27,12 +36,32 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--background);
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+/* TODO CHANGE TO USE ALL BUTTONS INSTEAD OF CLASS ? */
+.btn-primary {
+  background-color: var(--primary);
+  border: var(--secondary) 2px solid;
+  color: var(--color);
+}
+
+.btn-check+.btn-primary:hover {
+  background-color: var(--primary);
+  border: var(--secondary) 2px solid;
+  filter: brightness(1.15);
+  color: black;
+}
+
+.btn-primary:hover {
+  color: white;
+}
+  
 
 button {
   border-radius: 8px;

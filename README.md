@@ -25,22 +25,21 @@ npm install react-bootstrap
     type: string
     email: string
     ELO: number
-    classCodes: string[]
+    classCodes: Course[] (reference's)
     questionTags: string[]
     [...classId: string = rank: number]
 
 ## ======== Questions =========
-    subjects: collections (sql, relational algebra, python...)
-        Question: Document
-            difficulty: string
-            questionText: string
-            answer: string
-            format: string
+    subject: string
+    difficulty: string : easy, intermediate, challenging
+    questionText: string
+    answer: string
+    format: string
 
 ## ========= Courses ===========
-    instructor: uid of User
-    courseName: string
-    students: [] of uid's
-    courseCode: string
+    instructor: uid reference of User
+    name: string
+    students: [] of uid reference's
     difficultyTags: string[]
     subject: string
+    description: string

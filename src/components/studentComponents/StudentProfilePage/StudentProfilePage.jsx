@@ -43,8 +43,7 @@ class StudentProfilePage extends Component {
                     </Col>
                 </Row>
             </>
-            
-            )
+        )
     }
 }
 

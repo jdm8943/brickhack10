@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class StudentCoursesPage extends Component {
+class StudentCoursePage extends Component {
     static defaultProps = {}
     state = {}
     render(){
@@ -8,4 +8,4 @@ class StudentCoursesPage extends Component {
     }
 }
 
-export default StudentCoursesPage;
+export default StudentCoursePage;

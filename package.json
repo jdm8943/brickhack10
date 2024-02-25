@@ -1,7 +1,7 @@
 {
   "name": "brickhack10",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "pg-promise": "^11.5.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",
     "react-dom": "^18.2.0",
-    "reactfire": "^4.2.3"
+    "reactfire": "^4.2.3",
+    "require": "^2.4.20",
+    "sass": "^1.71.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
