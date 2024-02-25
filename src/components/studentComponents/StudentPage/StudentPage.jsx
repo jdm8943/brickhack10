@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 import StudentProfilePage from '../StudentProfilePage/StudentProfilePage.jsx';
 import SessionPage from '../LearningSessionPage/SessionPage.jsx'
-import StudentCoursesListPage from '../StudentCoursesListPage/StudentCoursePage.jsx';
+import StudentCoursesListPage from '../StudentCoursesListPage/StudentCoursesListPage.jsx';
 import StudentGlobalLeaderboardPage from '../StudentGlobalLeaderboardPage/StudentGlobalLeaderboardPage.jsx';
 
 
