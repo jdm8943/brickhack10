@@ -29,7 +29,7 @@ class SessionPage extends React.Component {
         const quesQuery = query(collection(this.props.firestoredb, "Questions")
             , where("subject", "==", this.state.subjectPref)
             , where("difficulty", "==", this.state.difficultyPref)
-            , where("format", "==", "short answer")
+            , where("format", "==", "multiple choice")
         )
 
         getDocs(quesQuery)
@@ -46,8 +46,8 @@ class SessionPage extends React.Component {
                 this.setState(
                     {
                         questions: questionsArr,
-                        curQuestionIndex: 0,
-                        currentQuestion: <QuestionShortA
+                        curQuestionIndex: 1,
+                        currentQuestion: <QuestionMC
                             displaySuccess={this.answerCorrect}
                             displayFailure={this.answerFailure}
                             question={questionsArr[0]}
@@ -63,11 +63,11 @@ class SessionPage extends React.Component {
     }
 
     answerCorrect = () => {
-        this.setState({ showNextQuestionButton: true })
+        this.setState({ showNextQuestionButton: true, showTryAgainMessage: false, openAiResponse: null })
     }
 
     answerFailure = (openAiResponse) => {
-        this.setState({ showTryAgainMessage: true, openAiResponse: openAiResponse })
+        this.setState({ showTryAgainMessage: true, openAiResponse: openAiResponse, showNextQuestionButton: false})
     }
 
     nextButtonClicked = (e) => {
@@ -79,7 +79,10 @@ class SessionPage extends React.Component {
                     displaySuccess={this.answerCorrect}
                     displayFailure={this.answerFailure}
                     question={this.state.questions[prevState.curQuestionIndex]}
-                />
+                />,
+                showTryAgainMessage: false, 
+                openAiResponse: null, 
+                showNextQuestionButton: false,
             }
         })
     }
@@ -112,6 +115,7 @@ class SessionPage extends React.Component {
             <>
                 {this.state.currentQuestion}
                 {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
+                {this.state.showTryAgainMessage ? this.renderFailureMessage() : <></>}
                 {this.state.showOpenAi ? this.renderOpenAiMessage : <></>}
             </>
         );
