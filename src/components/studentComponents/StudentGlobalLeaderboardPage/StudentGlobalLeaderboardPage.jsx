@@ -1,8 +1,13 @@
 import React from 'react';
 
 class StudentGlobalLeaderboardPage extends React.Component {
-    static defaultProps = {};
-    state = {};
+    constructor(props) {
+        super(props);
+    }
+
+    populateGlobalLeaderBoard = () => {
+        
+    }
 
     render(){
         return (
