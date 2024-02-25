@@ -11,17 +11,28 @@ class SessionPage extends React.Component {
             difficultyPref: "easy",
             subjectPref: "sql",
             questions: null,
+            currentQuestion: null,
         }
     }
 
     componentDidMount = () => {
         this.populateQuestions();
+        console.log(this.state.questions)
+        this.setState({
+            currentQuestion: <QuestionMC
+                displaySuccess={this.showNextQuestionButton}
+                displayFailure={this.displayFailure}
+                question={this.state.questions[0]}
+            />
+        })
     }
 
     populateQuestions = () => {
         const quesQuery = query(collection(this.props.firestoredb, "Questions")
             , where("subject", "==", this.state.subjectPref)
-            , where("difficulty", "==", this.state.difficultyPref))
+            , where("difficulty", "==", this.state.difficultyPref)
+            , where("format", "==", "multiple choice")
+        )
 
         getDocs(quesQuery)
             .then((questionsSnapshot) => {
@@ -34,7 +45,7 @@ class SessionPage extends React.Component {
             .then((questions) => {
                 this.setState(
                     { questions: questions },
-                    () => {console.log(questions)}
+                    () => { console.log(questions) }
                 )
             }).catch((error) => {
                 console.log("Error getting questions: ", error);
@@ -43,10 +54,18 @@ class SessionPage extends React.Component {
 
     }
 
+    showNextQuestionButton = () => {
+
+    }
+
+    displayFailure = () => {
+
+    }
+
     render = () => {
         return (
             <>
-            
+
             </>
         );
     }
