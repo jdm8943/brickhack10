@@ -15,7 +15,7 @@ class App extends Component {
             email: null,
             isInstructor: null,
             firestoredb: null,
-            userInfo: null,
+            userRef: null,
         };
     }
 
@@ -39,15 +39,18 @@ class App extends Component {
                     }
                     setDoc(dref, newUser)
                         .then(() => {
+                            this.state.userRef = dref;
                             console.log("User written with ID:", dref.id);
                         })
                         .catch((error) => {
                             console.error("Error adding document:", error);
                         });
+                    
                 } else {
                     const uData = docSnapshot.data();
                     this.setState({
                         displayName: uData.displayName,
+                        userRef: dref,
                     })
                     console.log(uData)
                 }
