@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import StudentPage from './StudentPage/StudentPage.jsx';
-import InstructorPage from './InstructorPage/InstructorPage.jsx';
+import StudentPage from './components/studentComponents/StudentPage/StudentPage.jsx';
+import InstructorPage from './components/instructorComponents/InstructorPage/InstructorPage.jsx';
 import LoginPage from './LoginPage/LoginPage.jsx';
 
 
