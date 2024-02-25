@@ -105,7 +105,7 @@ class SessionPage extends React.Component {
     }
 
     answerCorrect = () => {
-        this.setState({ showNextQuestionButton: true, showTryAgainMessage: false, openAiResponse: null })
+        this.setState({ showNextQuestionButton: true, showTryAgainMessage: false, openAiResponse: null, showOpenAi: false})
     }
 
     answerFailure = (openAiResponse) => {
@@ -147,8 +147,9 @@ class SessionPage extends React.Component {
     }
 
     renderOpenAiMessage = () => {
-        return (
-            <div>{this.state.openAiResponse.message}</div>
+        return (<>
+            {this.state.openAiResponse !== null? <div>{this.state.openAiResponse.message}</div> : <></>}
+        </>
         )
     }
 

@@ -44,7 +44,7 @@ class QuestionShortA extends Question {
                 db: this.state.database
             }
             this.sendQueryToBack(pl).then(res => {
-                res === null ? this.props.displaySuccess() : this.props.displayFailure(res)
+                res.message === null ? this.props.displaySuccess() : this.props.displayFailure(res)
             });
             // this.setState({
             //     postPayload: {
