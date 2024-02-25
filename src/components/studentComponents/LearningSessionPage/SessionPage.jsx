@@ -1,5 +1,6 @@
 import React from 'react';
-import QuestionPage from './Question'; // Import the QuizQuestion component
+import Question from './Question'; // Import the QuizQuestion component
+import QuestionMC from '/QuestionMC';
 import { collection, where, getDocs, query } from 'firebase/firestore';
 
 

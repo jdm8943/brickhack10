@@ -1,7 +1,8 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import Question from './Question';
 
-class QuestionMC extends React.Component {
+class QuestionMC extends Question {
     constructor(props) {
         super(props);
         this.state = {
