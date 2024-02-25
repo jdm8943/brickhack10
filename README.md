@@ -14,7 +14,7 @@ npm install reactfire
 npm install react-bootstrap
 - uses reactfire framework
 
-# Firebase Data Model
+# Firestore Data Model
 
 ## ========= User ============
     uid: string
