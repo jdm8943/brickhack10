@@ -21,7 +21,7 @@ class Question extends React.Component {
     render() {
         return (
             <>
-                <Button type='primary' onClick={() => this.CheckAnswer(this.state.answer)}>Submit</Button>
+                <Button type='primary' onClick={() => this.CheckAnswer(this.state.answer)} style={{marginTop: "10px"}}>Submit</Button>
             </>
         );
     }

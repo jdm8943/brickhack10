@@ -34,15 +34,13 @@ class StudentPage extends React.Component {
             <>
                 <Row>
                     <Col>
-                        <Navbar bg="dark" data-bs-theme="dark">
-                            <Container>
+                        <Navbar bg="dark" data-bs-theme="dark" style={{margin: "0px"}}>
                                 <Nav className="me-auto">
                                     <Nav.Link href="#profile" onClick={() => this.setState({ page: 'profile' })}>Profile</Nav.Link>
                                     <Nav.Link href="#courses" onClick={() =>this.setState({page:'courses'})}>Courses</Nav.Link>
                                     <Nav.Link href="#learning" onClick={() =>this.setState({page:'learning'})}>Learning</Nav.Link>
                                     <Nav.Link href="#leaderboard" onClick={() =>this.setState({page:'leaderboard'})}>Leaderboard</Nav.Link>
                                 </Nav>
-                            </Container>
                         </Navbar>
                     </Col>
                 </Row>

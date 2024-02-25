@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, FormGroup } from 'react-bootstrap';
+import { Form, FormGroup, Card } from 'react-bootstrap';
 import Question from './Question';
 import { getFirestore, collection, getDocs, query, doc, getDoc, where, setDoc } from "firebase/firestore";
 
@@ -37,7 +37,7 @@ class QuestionShortA extends Question {
         if (this.state.matchGeneralAnswer) {
             this.props.displaySuccess()
         } else {
-            const pl =  {
+            const pl = {
                 cmd: this.state.userInput,
                 correct_cmd: this.props.question.generalAnswer,
                 description: this.props.question.questionText,
@@ -90,7 +90,7 @@ class QuestionShortA extends Question {
 
             const responseData = await response.json();
             console.log(responseData)
-            this.setState({ loading: false  });
+            this.setState({ loading: false });
             return responseData;
 
         } catch (error) {
@@ -102,21 +102,25 @@ class QuestionShortA extends Question {
 
     render() {
         return (
-            <>
-                <Form>
-                    <FormGroup>
-                        <Form.Label>{this.props.question.questionText}</Form.Label>
-                        <Form.Control
-                            type="input"
-                            placeholder="Write SQL command here."
-                            onChange={(e) => this.handleInput(e)}
-                        />
+            <Card style={{ textAlign: 'center', backgroundColor: "var(--background)", margin: "10px" }}>
+                <Card.Header as={"h3"}>
+                    {this.props.question.questionText}
+                </Card.Header>
+                <Card.Body style={{ backgroundColor: "var(--background)" }}>
+                    <Form>
+                        <FormGroup>
+                            <Form.Control
+                                type="input"
+                                placeholder="Write SQL command here."
+                                onChange={(e) => this.handleInput(e)}
+                            />
 
-                    </FormGroup>
-                </Form>
+                        </FormGroup>
+                    </Form>
+                    {super.render()}
+                </Card.Body>
                 {/* {this.state.correct ? <p className="confirmation">Correct! "{this.state.optionSelectedString}"</p> : this.state.indexChecked != -1 ? <p className="confirmation">Incorrect</p> : <></>}  */}
-                {super.render()}
-            </>
+            </Card>
         );
     }
 }
