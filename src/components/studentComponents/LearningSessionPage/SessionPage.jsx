@@ -20,6 +20,7 @@ class SessionPage extends React.Component {
             showTryAgainMessage: false,
             openAiResponse: null,
             showOpenAi: false,
+            loadingResponse: false,
         }
     }
 
