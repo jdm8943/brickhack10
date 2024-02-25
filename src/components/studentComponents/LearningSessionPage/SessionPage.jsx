@@ -23,7 +23,7 @@ class SessionPage extends React.Component {
         const quesQuery = query(collection(this.props.firestoredb, "Questions")
             , where("subject", "==", this.state.subjectPref)
             , where("difficulty", "==", this.state.difficultyPref)
-            , where("format", "==", "multiple choice")
+            , where("format", "==", "short answer")
         )
 
         getDocs(quesQuery)
@@ -40,7 +40,7 @@ class SessionPage extends React.Component {
                 this.setState(
                     {
                         questions: questionsArr,
-                        currentQuestion: <QuestionMC
+                        currentQuestion: <QuestionShortA
                             displaySuccess={this.showNextQuestionButton}
                             displayFailure={this.displayFailure}
                             question={questionsArr[0]}
