@@ -15,34 +15,47 @@ class QuestionShortA extends Question {
         };
 
         console.log(this.props)
-        // getDoc(doc(collection(this.props.firestoredb, "ReferenceTables"), this.props.question.tableRef))
-        //     .then((tableSnapshot) => {
-        //         console.log(tableSnapshot.data())
-        //         this.setState({database: tableSnapshot.data().DBName})
-        //     })
-        //     .catch((e) => {
-        //         console.log("Error: ", e)
-        //     })
+        // const tableCol = collection(this.props.firestoredb, "ReferenceTables")
+        // const tableDocRef = doc(tableCol, this.props.question.tableRef)
+
+    }
+
+    componentDidMount = () => {
+        getDoc(this.props.question.tableRef)
+            .then((tableSnapshot) => {
+                console.log(tableSnapshot.data())
+                this.setState({ database: tableSnapshot.data().DBName })
+            })
+            .catch((e) => {
+                console.log("Error: ", e)
+            })
+
     }
 
     CheckAnswer = () => {
         console.log(this.state.userInput)
-        if  (this.state.matchGeneralAnswer) {
+        if (this.state.matchGeneralAnswer) {
             this.props.displaySuccess()
         } else {
-            this.setState({
-                postPayload: {
-                    cmd: this.state.userInput,
-                    correct_cmd: this.props.question.generalAnswer,
-                    description: this.props.question.questionText,
-                    db: ""
-                }
-            })
+            const pl =  {
+                cmd: this.state.userInput,
+                correct_cmd: this.props.question.generalAnswer,
+                description: this.props.question.questionText,
+                db: this.state.database
+            }
+            this.sendQueryToBack(pl);
+            // this.setState({
+            //     postPayload: {
+            //         cmd: this.state.userInput,
+            //         correct_cmd: this.props.question.generalAnswer,
+            //         description: this.props.question.questionText,
+            //         db: this.state.database
+            //     }
+            // }, () => {
+            //     console.log(this.state.postPayload)
+            //     this.sendQueryToBack();
+            // })
         }
-    }
-
-    sendQueryToBack = () => {
-
     }
 
     handleInput = (event) => {
@@ -55,22 +68,20 @@ class QuestionShortA extends Question {
         )
     }
 
-    postUserAnswer = async (userAnswer) => {
+    sendQueryToBack = async (postData) => {
         this.setState({ loading: true });
-
-
 
         const options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(postData),
         };
 
         try {
-            const response = await fetch(url, options);
-
+            const response = await fetch(this.state.postAnswerUrl, options);
+            console.log(response)
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`);
             }

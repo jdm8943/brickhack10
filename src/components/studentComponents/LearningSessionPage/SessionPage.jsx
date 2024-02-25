@@ -53,6 +53,7 @@ class SessionPage extends React.Component {
                 displaySuccess={this.answerCorrect}
                 displayFailure={this.answerFailure}
                 question={question}
+                {...this.props}
             />
         )
     }
@@ -61,6 +62,8 @@ class SessionPage extends React.Component {
         const quesQuery = query(collection(this.props.firestoredb, "Questions")
             , where("subject", "==", this.state.subjectPref)
             , where("difficulty", "==", this.state.difficultyPref)
+            // for testing
+            , where("format", "==", "short answer")
         )
 
         getDocs(quesQuery)
