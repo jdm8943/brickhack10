@@ -6,41 +6,52 @@ class QuestionMC extends Question {
     constructor(props) {
         super(props);
         this.state = {
-            optionChecked: "", 
+            optionSelectedString: "", 
+            indexChecked:  -1,
             correct: false,  // Indicates if the option that is currently checked is the correct answer
         };
     }
 
-    handleChange = (event, optionChecked) => {
+    CheckAnswer = () => {
+        (this.state.correct ? this.props.displaySuccess() : this.props.displayFailure(null));
+        (this.state.correct ? console.log("correct answer from check answer") : console.log("wrong answer from check answer"));
+    }
+
+    handleChange = (event, idxChecked, optionString) => {
         // console.log(event.target.value);
         // console.log(event.target.checked);
-        console.log(optionChecked);
+        console.log(idxChecked);
         this.setState(
             { 
-                optionChecked: optionChecked,
-                correct: (optionChecked === this.props.answer),
-            }, () => {console.log(this.state.correct)}
+                indexChecked: idxChecked,
+                optionSelectedString: optionString,
+                correct: (idxChecked === this.props.question.answerIdx),
+            }, () => {
+                console.log(this.state.correct)
+                console.log(this.props.question)
+            }
         );
         
     }
 
     render() {
-        const { question, answer, options } = this.props; // Destructure question and answer props
         return (
             <>
                 <Form>
-                    <Form.Label>{question}</Form.Label>
-                    {options.map((option, index) => (
+                    <Form.Label>{this.props.question.questionText}</Form.Label>
+                    {this.props.question.options.map((option, index) => (
                         <Form.Check
+                            key={index}
                             type="checkbox"
-                            id={`question-${question}`} // Use question text as ID for accessibility
-                            checked={this.state.optionChecked === option}
-                            onChange={(e) => this.handleChange(e, option)}
+                            id={`question-${this.props.question}`} // Use question text as ID for accessibility
+                            checked={this.state.indexChecked === index}
+                            onChange={(e) => this.handleChange(e, index, option)}
                             label={option} // Label is provided directly in the Form.Check
                         />
                     ))}
                 </Form>
-                {this.state.correct && <p className="answer">{answer}</p>} 
+                {/* {this.state.correct ? <p className="confirmation">Correct! "{this.state.optionSelectedString}"</p> : this.state.indexChecked != -1 ? <p className="confirmation">Incorrect</p> : <></>}  */}
+                {super.render()}
             </>
         );
     }
