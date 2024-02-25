@@ -4,9 +4,7 @@ import { Button} from 'react-bootstrap';
 class Question extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            answer: null
-        };
+        this.state = {};
     }
 
     static defaultProps = {
@@ -16,7 +14,7 @@ class Question extends React.Component {
     }
 
 
-    CheckAnswer = (answer) => {
+    CheckAnswer = () => {
         console.log("Missing implementation of CheckAnswer() function")
     }
 

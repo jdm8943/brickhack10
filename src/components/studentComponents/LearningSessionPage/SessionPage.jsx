@@ -11,7 +11,11 @@ class SessionPage extends React.Component {
             difficultyPref: "easy",
             subjectPref: "sql",
             questions: null,
+            curQuestionIndex: null,
             currentQuestion: null,
+            showNextQuestionButton: false,
+            showTryAgainMessage: false,
+            openAiResponse: null,
         }
     }
 
@@ -40,9 +44,10 @@ class SessionPage extends React.Component {
                 this.setState(
                     {
                         questions: questionsArr,
+                        curQuestionIndex: 0,
                         currentQuestion: <QuestionShortA
-                            displaySuccess={this.showNextQuestionButton}
-                            displayFailure={this.displayFailure}
+                            displaySuccess={this.answerCorrect}
+                            displayFailure={this.answerFailure}
                             question={questionsArr[0]}
                         />
                     },
@@ -55,18 +60,41 @@ class SessionPage extends React.Component {
 
     }
 
-    showNextQuestionButton = () => {
-
+    answerCorrect = () => {
+        this.setState({ showNextQuestionButton: true })
     }
 
-    displayFailure = () => {
+    answerFailure = (openAiResponse) => {
+        this.setState({ showTryAgainMessage: true, openAiResponse: openAiResponse })
+    }
 
+    nextButtonClicked = (e) => {
+        // TODO handle next question with type handling
+        this.setState((prevState) => {
+            return {
+                curQuestionIndex: prevState.curQuestionIndex + 1,
+                currentQuestion: <QuestionMC
+                    displaySuccess={this.answerCorrect}
+                    displayFailure={this.answerFailure}
+                    question={this.state.questions[prevState.curQuestionIndex]}
+                />
+            }
+        })
+    }
+
+    renderNextQuestionButton = () => {
+        return (
+            <Button onClick={this.nextButtonClicked} type="primary">
+                Next Question
+            </Button>
+        )
     }
 
     render = () => {
         return (
             <>
                 {this.state.currentQuestion}
+                {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
             </>
         );
     }
