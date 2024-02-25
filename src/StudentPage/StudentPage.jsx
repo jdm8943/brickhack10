@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
-import InstructorPage from '../InstructorPage/InstructorPage.jsx';
 import StudentProfilePage from '../StudentProfilePage/StudentProfilePage.jsx';
+import SessionPage from '../LearningSessionPage/SessionPage.jsx'
+import StudentCoursesPage from '../StudentCoursesPage/StudentCoursesPage.jsx';
 
 
 class StudentPage extends Component {
@@ -15,11 +16,9 @@ class StudentPage extends Component {
                 case "profile":
                     return  <StudentProfilePage {...this.props}/>;
                 case "courses":
-                    //TODO: add courses Page
-                    return <></>
+                    return <StudentCoursesPage {...this.props}/>;
                 case "learning":
-                    //TODO: add learning Page
-                    return <></>
+                    return <SessionPage {...this.props}/>;
                 case "leaderboard":
                     //TODO: add leaderboard Page
                     return <></>
