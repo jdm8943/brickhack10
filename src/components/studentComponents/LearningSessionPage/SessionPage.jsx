@@ -175,15 +175,16 @@ class SessionPage extends React.Component {
                 {this.state.renderCard &&
                     <Row>
                         <Col>
-                            <Card style={{margin: "10px"}}>
+                            <Card style={{ margin: "10px" }}>
                                 <Card.Header>
                                     {this.state.showTryAgainMessage ? this.renderFailureMessage() : <></>}
                                     {this.state.showNextQuestionButton ? this.renderSuccessMessage() : <></>}
                                 </Card.Header>
-                                {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
-                                {this.state.showTryAgainMessage ? <Button type='primary' onClick={() => this.setState({ showOpenAi: true })}>Show SQueaLy Suggestion</Button> : <></>}
-                                {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
-
+                                <Card.Body>
+                                    {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
+                                    {this.state.showTryAgainMessage ? <Button type='primary' onClick={() => this.setState({ showOpenAi: true })}>Show SQueaLy Suggestion</Button> : <></>}
+                                    {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
+                                </Card.Body>
                             </Card>
                         </Col>
                     </Row>
