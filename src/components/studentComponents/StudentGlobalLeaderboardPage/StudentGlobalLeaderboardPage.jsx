@@ -42,7 +42,7 @@ class StudentGlobalLeaderboardPage extends React.Component {
                 <ol><h5>
                 {/* Use map() to generate JSX for each item */}
                 {this.state.users.map((user, index) => (
-                    <li key={index}>{user.displayName}</li>
+                    <li key={index}>{user.displayName} : {user.ELO}</li>
                 ))}</h5>
                 </ol>
             </div>
