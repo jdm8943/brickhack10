@@ -1,5 +1,3 @@
-import traceback
-
 import logging
 from fastapi import FastAPI
 import sqlite3
@@ -17,8 +15,19 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler())
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 @app.post("/check_cmd")
 async def root(request: command ):
     con = sqlite3.connect(os.path.join("dbs", request.db + ".db"))
@@ -26,7 +35,7 @@ async def root(request: command ):
     
     try:
         cur.execute(request.cmd)
-        return {"message": "You did great"}
+        return {"message": None}
     
     except Exception as e:
         logger.info("SQL command failed! - " + request.cmd)

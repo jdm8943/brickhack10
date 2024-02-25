@@ -9,7 +9,7 @@ import StudentGlobalLeaderboardPage from '../StudentGlobalLeaderboardPage/Studen
 class StudentPage extends React.Component {
     static defaultProps = {}
     state = {
-        page: null,
+        page: "learning",
     }
 
     constructor(props) {
