@@ -13,9 +13,8 @@ class QuestionMC extends Question {
     }
 
     CheckAnswer = () => {
-        this.setState({
-            answer: this.state.correct
-        })
+        (this.state.correct ? this.props.displaySuccess() : this.props.displayFailure(null));
+        (this.state.correct ? console.log("correct answer from check answer") : console.log("wrong answer from check answer"));
     }
 
     handleChange = (event, idxChecked, optionString) => {
@@ -51,7 +50,7 @@ class QuestionMC extends Question {
                         />
                     ))}
                 </Form>
-                {this.state.correct ? <p className="confirmation">Correct! "{this.state.optionSelectedString}"</p> : this.state.indexChecked != -1 ? <p className="confirmation">Incorrect</p> : <></>} 
+                {/* {this.state.correct ? <p className="confirmation">Correct! "{this.state.optionSelectedString}"</p> : this.state.indexChecked != -1 ? <p className="confirmation">Incorrect</p> : <></>}  */}
                 {super.render()}
             </>
         );
