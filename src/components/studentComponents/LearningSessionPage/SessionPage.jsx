@@ -1,6 +1,7 @@
 import React from 'react';
 import Question from './Question'; // Import the QuizQuestion component
 import QuestionMC from './QuestionMC';
+import QuestionShortA from './QuestionShortA';
 import { collection, where, getDocs, query } from 'firebase/firestore';
 
 
