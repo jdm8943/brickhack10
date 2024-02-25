@@ -23,8 +23,12 @@ class QuestionShortA extends Question {
     componentDidMount = () => {
         getDoc(this.props.question.tableRef)
             .then((tableSnapshot) => {
-                console.log(tableSnapshot.data())
-                this.setState({ database: tableSnapshot.data().DBName })
+                const tableData = tableSnapshot.data()
+                console.log(tableData)
+                this.setState({ 
+                    database: tableData.DBName,
+                    columns: tableData.ColArray
+                })
             })
             .catch((e) => {
                 console.log("Error: ", e)
@@ -106,6 +110,7 @@ class QuestionShortA extends Question {
                 <Card.Header as={"h3"}>
                     {this.props.question.questionText}
                 </Card.Header>
+                <Card.Subtitle>{this.state.ColArray}</Card.Subtitle>
                 <Card.Body style={{ backgroundColor: "var(--background)" }}>
                     <Form>
                         <FormGroup>
