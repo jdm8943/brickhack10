@@ -34,7 +34,6 @@ class App extends Component {
                         type: (this.state.isInstructor ? "instructor" : "student"),
                         classCodes: [],
                         questionTags: [],
-
                     }
                     setDoc(dref, newUser)
                         .then(() => {
@@ -45,6 +44,9 @@ class App extends Component {
                         });
                 } else {
                     const uData = docSnapshot.data();
+                    this.setState({
+                        displayName: uData.displayName,
+                    })
                     console.log(uData)
                 }
             })
