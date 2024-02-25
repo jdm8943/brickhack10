@@ -20,13 +20,30 @@ class QuestionShortA extends Question {
 
     }
 
+    componentDidUpdate = (prevProps, prevState, snapshot) => {
+        if (prevProps.question !== this.props.question) {
+            getDoc(this.props.question.tableRef)
+                .then((tableSnapshot) => {
+                    const tableData = tableSnapshot.data()
+                    console.log(tableData)
+                    this.setState({
+                        database: tableData.DBName,
+                        columns: tableData.ColArray.join(",")
+                    })
+                })
+                .catch((e) => {
+                    console.log("Error: ", e)
+                })
+        }
+    }
+
     componentDidMount = () => {
         console.log(this.props)
         getDoc(this.props.question.tableRef)
             .then((tableSnapshot) => {
                 const tableData = tableSnapshot.data()
                 console.log(tableData)
-                this.setState({ 
+                this.setState({
                     database: tableData.DBName,
                     columns: tableData.ColArray.join(",")
                 })
