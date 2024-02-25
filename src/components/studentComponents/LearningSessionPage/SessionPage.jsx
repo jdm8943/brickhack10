@@ -4,7 +4,7 @@ import QuestionMC from './QuestionMC';
 import QuestionBlanks from './QuestionBlanks'
 import QuestionShortA from './QuestionShortA'
 import { collection, where, getDocs, query } from 'firebase/firestore';
-import { Button } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 
 
 class SessionPage extends React.Component {
@@ -105,7 +105,7 @@ class SessionPage extends React.Component {
     }
 
     answerCorrect = () => {
-        this.setState({ showNextQuestionButton: true, showTryAgainMessage: false, openAiResponse: null, showOpenAi: false})
+        this.setState({ showNextQuestionButton: true, showTryAgainMessage: false, openAiResponse: null, showOpenAi: false })
     }
 
     answerFailure = (openAiResponse) => {
@@ -148,7 +148,7 @@ class SessionPage extends React.Component {
 
     renderOpenAiMessage = () => {
         return (<>
-            {this.state.openAiResponse !== null? <div>{this.state.openAiResponse.message}</div> : <></>}
+            {this.state.openAiResponse !== null ? <div>{this.state.openAiResponse.message}</div> : <></>}
         </>
         )
     }
@@ -156,10 +156,26 @@ class SessionPage extends React.Component {
     render = () => {
         return (
             <>
-                {this.state.currentQuestion}
-                {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
-                {this.state.showTryAgainMessage ? this.renderFailureMessage() : <></>}
-                {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
+                <Row>
+                    <Col>
+                        {this.state.currentQuestion}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        {this.state.showNextQuestionButton ? this.renderNextQuestionButton() : <></>}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        {this.state.showTryAgainMessage ? this.renderFailureMessage() : <></>}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        {this.state.showOpenAi ? this.renderOpenAiMessage() : <></>}
+                    </Col>
+                </Row>
             </>
         );
     }
