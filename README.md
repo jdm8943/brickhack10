@@ -35,6 +35,7 @@ npm install react-bootstrap
 
 ## ========= Courses ===========
     instructor: uid of User
+    courseName: string
     students: [] of uid's
     courseCode: string
     difficultyTags: string[]
