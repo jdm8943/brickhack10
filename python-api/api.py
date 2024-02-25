@@ -9,7 +9,7 @@ class command(BaseModel):
     cmd: str
     correct_cmd: str | None = None
 
-con = sqlite3.connect("tutorial.db")
+con = sqlite3.connect("dbs/tutorial.db")
 cur = con.cursor()
 
 logger = logging.getLogger(__name__)
