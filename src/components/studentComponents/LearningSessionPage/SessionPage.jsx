@@ -17,14 +17,6 @@ class SessionPage extends React.Component {
 
     componentDidMount = () => {
         this.populateQuestions();
-        console.log(this.state.questions)
-        this.setState({
-            currentQuestion: <QuestionMC
-                displaySuccess={this.showNextQuestionButton}
-                displayFailure={this.displayFailure}
-                question={this.state.questions[0]}
-            />
-        })
     }
 
     populateQuestions = () => {
@@ -40,12 +32,21 @@ class SessionPage extends React.Component {
                 questionsSnapshot.forEach((qDoc) => {
                     questionDocs.push({ ...qDoc.data(), id: qDoc.id });
                 })
+                // console.log(questionDocs)
                 return questionDocs;
             })
-            .then((questions) => {
+            .then((questionsArr) => {
+                console.log("updating questions state")
                 this.setState(
-                    { questions: questions },
-                    () => { console.log(questions) }
+                    {
+                        questions: questionsArr,
+                        currentQuestion: <QuestionMC
+                            displaySuccess={this.showNextQuestionButton}
+                            displayFailure={this.displayFailure}
+                            question={questionsArr[0]}
+                        />
+                    },
+                    () => { console.log(this.state.questions) }
                 )
             }).catch((error) => {
                 console.log("Error getting questions: ", error);
