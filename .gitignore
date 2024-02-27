@@ -26,3 +26,4 @@ package-lock.json
 package-lock.json
 python-api/openaikeys.txt
 *.pyc
+src/components/LoginPage/apiKeys.jsx
