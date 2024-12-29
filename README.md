@@ -1,3 +1,11 @@
+# SQueaLy - Overview
+
+## Authors
+Jack McLaughlin, Spencer Kurtz, Sohail Kumar, Zak Kaufman
+
+## Description
+SQueaLy is an educational platform that gamifies the learning process for database management languages like SQL. We created it for a hackathon, Brickhack X, which took place at Rochester Institute of Technology in the spring of 2024.
+
 # Run Instructions
 To run the project, run
 > run.bat
